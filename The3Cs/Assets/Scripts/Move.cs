@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public float moveSpeed = 5f;  // Adjust this value to control the movement speed.
+    public float moveSpeed = 5f;   // Adjust this value to control the movement speed.
+    public float rotationSpeed = 100f;  // Adjust this value to control the rotation speed.
 
     void Update()
     {
@@ -20,5 +21,12 @@ public class Move : MonoBehaviour
 
         // Apply movement to the GameObject.
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+        // Get input for rotation.
+        float rotateInput = Input.GetAxis("Rotate");
+
+        // Rotate the GameObject based on input.
+        transform.Rotate(Vector3.up * rotateInput * rotationSpeed * Time.deltaTime);
     }
+
 }
