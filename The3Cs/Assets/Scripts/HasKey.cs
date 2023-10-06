@@ -21,7 +21,7 @@ public class HasKey : MonoBehaviour
         {
             // Player has the key and is colliding with the door.
             Debug.Log("Door Unlocked and Opened");
-
+            Destroy(other.gameObject);
             // You can add code here to open the door. For example, you might animate the door opening.
             // Replace the following line with the appropriate code for your game.
             OpenDoor(other.gameObject);
