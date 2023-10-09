@@ -15,7 +15,7 @@ public class AnimationPlayer : MonoBehaviour
     private void Update()
     { 
         bool isWalking = animator.GetBool(isWalkingHash);
-        bool forwardPressed = Input.GetKeyDown("w");
+        bool forwardPressed = Input.GetKey("w");
         if (!isWalking &&  forwardPressed)
         {
             animator.SetBool(isWalkingHash, true);
