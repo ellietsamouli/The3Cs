@@ -528,43 +528,43 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch22_nonPBR(Clone)
+    - name: T-pose(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch22_Shirt
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch22_Pants
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch22_Body
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch22_Eyelashes
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch22_Sneakers
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch22_Hair
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig2:Hips
-      parentName: Ch22_nonPBR(Clone)
+      parentName: T-pose(Clone)
       position: {x: 0.0000012337621, y: 1.0035099, z: 0.008091702}
       rotation: {x: -0.0000001296993, y: 0.00000042645595, z: -0.000013398549, w: 1}
       scale: {x: 1, y: 1, z: 1}
