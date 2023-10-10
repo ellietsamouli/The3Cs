@@ -28,34 +28,37 @@ public class AnimationPlayer : MonoBehaviour
         bool runPressed = Input.GetKey("left shift");
         bool jumpPressed = Input.GetKeyDown("space");
 
-        if (!isWalking && forwardPressed)
-        {
-            animator.SetBool(isWalkingHash, true);
-        }
-
-        if (isWalking && !forwardPressed)
-        {
-            animator.SetBool(isWalkingHash, false);
-        }
-
-        if (!isRunning && (forwardPressed && runPressed))
-        {
-            animator.SetBool(isRunningHash, true);
-        }
-
-        if (isRunning && (!forwardPressed || !runPressed))
-        {
-            animator.SetBool(isRunningHash, false);
-        }
-
         // Check for jump input and set the isJumping parameter accordingly.
-        if (jumpPressed)
+        animator.SetBool(isJumpingHash, jumpPressed);
+
+        if (isRunning)
         {
-            animator.SetBool(isJumpingHash, true);
+            if (!forwardPressed || !runPressed)
+            {
+                animator.SetBool(isRunningHash, false);
+            }
         }
         else
         {
-            animator.SetBool(isJumpingHash, false);
+            if (forwardPressed && runPressed)
+            {
+                animator.SetBool(isRunningHash, true);
+            }
+        }
+
+        if (isWalking)
+        {
+            if (!forwardPressed)
+            {
+                animator.SetBool(isWalkingHash, false);
+            }
+        }
+        else
+        {
+            if (forwardPressed)
+            {
+                animator.SetBool(isWalkingHash, true);
+            }
         }
 
         // Pick-up animation logic
@@ -75,5 +78,6 @@ public class AnimationPlayer : MonoBehaviour
             // Reset the "isLifting" parameter to false when the "E" key is released.
             animator.SetBool(isLiftingHash, false);
         }
+
     }
 }
