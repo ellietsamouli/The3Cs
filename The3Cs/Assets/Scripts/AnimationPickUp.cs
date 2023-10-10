@@ -16,12 +16,15 @@ public class AnimationPickUp : MonoBehaviour
     private void Update()
     {
         bool isLifting = animator.GetBool(isLiftingHash);
-        bool pickUpPressed = Input.GetKeyDown(KeyCode.E);
+        bool pickUpPressed = Input.GetKey("e");
 
         if (pickUpPressed && !isLifting)
         {
             // Set the "isLifting" parameter to true to trigger the pick-up animation.
             animator.SetBool(isLiftingHash, true);
+
+            // Debug the key press.
+            Debug.Log("E key pressed.");
         }
         else if (!pickUpPressed && isLifting)
         {
