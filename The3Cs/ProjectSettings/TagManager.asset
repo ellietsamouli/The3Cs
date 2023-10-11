@@ -8,7 +8,6 @@ TagManager:
   - Key
   - Game Controller
   - clue
-  - InteractiveObject
   layers:
   - Default
   - TransparentFX
