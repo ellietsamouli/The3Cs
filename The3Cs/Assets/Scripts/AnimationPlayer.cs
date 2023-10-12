@@ -21,7 +21,7 @@ public class AnimationPlayer : MonoBehaviour
         isJumpingHash = Animator.StringToHash("isJumping");
         isLiftingHash = Animator.StringToHash("isLifting");
         isOpeningHash = Animator.StringToHash("isOpening"); // Assign the hash for the new parameter
-        Debug.Log("isOpeningHash: " + isOpeningHash); // Check the hash value
+        
     }
 
     private void Update()
