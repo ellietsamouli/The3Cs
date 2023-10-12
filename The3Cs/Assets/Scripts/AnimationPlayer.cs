@@ -21,6 +21,7 @@ public class AnimationPlayer : MonoBehaviour
         isJumpingHash = Animator.StringToHash("isJumping");
         isLiftingHash = Animator.StringToHash("isLifting");
         isOpeningHash = Animator.StringToHash("isOpening"); // Assign the hash for the new parameter
+        Debug.Log("isOpeningHash: " + isOpeningHash); // Check the hash value
     }
 
     private void Update()
@@ -86,11 +87,12 @@ public class AnimationPlayer : MonoBehaviour
             // Opening animation logic
             bool isOpening = animator.GetBool(isOpeningHash);
             bool openPressed = Input.GetKey("o");
-
+           
             if (openPressed && !isOpening)
             {
                 // Set the "isOpening" parameter to true to trigger the opening animation.
                 animator.SetBool(isOpeningHash, true);
+               
             }
             else if (!openPressed && isOpening)
             {
