@@ -9,7 +9,6 @@ public class SlideTrigger : MonoBehaviour
     [SerializeField] private bool openTrigger = false;
     [SerializeField] private string doorOpen = "DoorOpen";
 
-    private bool hasKey = false; // Indicates whether the player has the key.
 
     private void OnTriggerEnter(Collider other)
     {
