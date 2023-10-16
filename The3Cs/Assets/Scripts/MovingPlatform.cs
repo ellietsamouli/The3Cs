@@ -4,67 +4,48 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private Transform startPosition; // The starting position.
-    [SerializeField] private Transform endPosition; // The ending position.
+    public Transform endPoint; // The position where the platform should move to
+    public float moveSpeed = 2.0f;
+    public float attachPlayerDelay = 2.0f; // Delay after player enters
 
-    [SerializeField] private float moveSpeed = 2.0f;
-    [SerializeField] private float pauseTime = 1.0f; // Time to pause at each end position.
-
-    private bool movingToEnd = true;
-    private float timer = 0.0f;
-    private bool playerOnPlatform = false;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerOnPlatform = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerOnPlatform = false;
-        }
-    }
+    private bool isMoving = false;
+    private bool playerAttached = false;
 
     private void Update()
     {
-        if (playerOnPlatform)
+        if (isMoving)
         {
-            if (movingToEnd)
-            {
-                // Move the platform towards the end position.
-                transform.position = Vector3.MoveTowards(transform.position, endPosition.position, moveSpeed * Time.deltaTime);
-
-                // Check if the platform has reached the end position.
-                if (transform.position == endPosition.position)
-                {
-                    // Stop the platform from moving further.
-                    movingToEnd = false;
-                    timer = 0.0f;
-                }
-            }
-            else
-            {
-                // Pause at the end position for a specified time.
-                timer += Time.deltaTime;
-                if (timer >= pauseTime)
-                {
-                    // Move the platform back to the start position.
-                    transform.position = Vector3.MoveTowards(transform.position, startPosition.position, moveSpeed * Time.deltaTime);
-
-                    // Check if the platform has reached the start position.
-                    if (transform.position == startPosition.position)
-                    {
-                        // Start moving towards the end position again.
-                        movingToEnd = true;
-                        timer = 0.0f;
-                    }
-                }
-            }
+            // Move the platform towards the endpoint
+            transform.position = Vector3.MoveTowards(transform.position, endPoint.position, moveSpeed * Time.deltaTime);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && !playerAttached)
+        {
+            playerAttached = true;
+            StartCoroutine(AttachPlayerAfterDelay(collision.transform));
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerAttached = false;
+            // Detach the player from the platform when they leave
+            collision.transform.parent = null;
+        }
+    }
+
+    private IEnumerator AttachPlayerAfterDelay(Transform player)
+    {
+        // Delay before attaching the player to the platform
+        yield return new WaitForSeconds(attachPlayerDelay);
+
+        // Attach the player to the platform
+        player.parent = transform;
+        isMoving = true;
     }
 }

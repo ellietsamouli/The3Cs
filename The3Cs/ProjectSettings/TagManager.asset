@@ -8,6 +8,7 @@ TagManager:
   - Key
   - Game Controller
   - clue
+  - Enemy
   layers:
   - Default
   - TransparentFX
